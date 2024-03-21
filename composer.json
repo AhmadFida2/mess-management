@@ -12,7 +12,9 @@
     ],
     "require": {
         "php": "^8.2.0",
+        "aymanalhattami/filament-slim-scrollbar": "^2.0",
         "codeat3/blade-line-awesome-icons": "^1.2",
+        "coolsam/flatpickr": "dev-laravel-11",
         "filament/filament": "^3.1",
         "flowframe/laravel-trend": "^v0.2.0",
         "guzzlehttp/guzzle": "^7.2",
@@ -21,8 +23,7 @@
         "laravel/sanctum": "^4.0",
         "laravel/tinker": "^2.7",
         "livewire/livewire": "^3",
-        "owenvoke/blade-fontawesome": "^2.0",
-        "coolsam/flatpickr": "dev-laravel-11"
+        "owenvoke/blade-fontawesome": "^2.0"
     },
     "require-dev": {
         "fakerphp/faker": "^1.9.1",

@@ -6,3 +6,4 @@ composer.phar
 # composer.lock
 *.zip
 /node_modules/
+.env
