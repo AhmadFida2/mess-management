@@ -7,8 +7,6 @@ use App\Filament\Resources\MemberResource\RelationManagers;
 use App\Filament\Resources\MemberResource\RelationManagers\BillsRelationManager;
 use App\Models\Member;
 use App\Models\User;
-use Filament\Forms;
-use Filament\Forms\Components\Checkbox;
 use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
@@ -19,9 +17,6 @@ use Filament\Tables\Table;
 use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Tables\Columns\ToggleColumn;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
-use Illuminate\Support\Facades\Hash;
 
 class MemberResource extends Resource
 {

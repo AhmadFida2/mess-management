@@ -3,13 +3,19 @@
 namespace App\Filament\Widgets;
 
 use App\Models\UnitCost;
-use Filament\Widgets\LineChartWidget;
+use Filament\Widgets\ChartWidget;
 use Flowframe\Trend\Trend;
 use Flowframe\Trend\TrendValue;
 
-class UnitCostChart extends LineChartWidget
+class UnitCostChart extends ChartWidget
 {
+
     protected static ?string $heading = 'Chart';
+
+    protected function getType(): string
+    {
+        return 'line';
+    }
 
     public static function canView(): bool
     {

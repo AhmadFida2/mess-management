@@ -3,26 +3,18 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\PaymentResource\Pages;
-use App\Filament\Resources\PaymentResource\RelationManagers;
 use App\Models\Bill;
 use App\Models\Member;
 use App\Models\Payment;
-use Closure;
-use Faker\Provider\Text;
-use Filament\Forms;
 use Filament\Forms\Components\Fieldset;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
-use Filament\Notifications\Notification;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
-use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
-use Illuminate\Database\Eloquent\Builder;
 use Illuminate\Database\Eloquent\Model;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 use Illuminate\Support\Facades\DB;
 
 class PaymentResource extends Resource
@@ -56,10 +48,9 @@ class PaymentResource extends Resource
                     ->options(Member::all()->pluck('name', 'id')->toArray())->label('Member Name')->reactive(),
                 Select::make('bill_id')
                     ->options(function (callable $get) {
-                        $bills = DB::Table('bills')->where('member_id', '=', $get('member_id'))
+                        return DB::Table('bills')->where('member_id', '=', $get('member_id'))
                             ->where('status', '<', 2)
                             ->pluck('bill_details', 'id');
-                        return $bills;
                     })->label('Select Bill')->reactive()->afterStateUpdated(function ($state, callable $set, $get) {
                         $billAmount = Bill::find($state)->amount;
                         $payments = DB::table('payments')->where('bill_id', '=', $state)->sum('amount');

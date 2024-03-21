@@ -3,9 +3,6 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Payment;
-use Closure;
-use Faker\Provider\Text;
-use Filament\Tables;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
@@ -14,7 +11,7 @@ class LatestPayments extends BaseWidget
 {
     public static function canView(): bool
     {
-        return !(auth()->user()->is_admin) && isset(auth()->user()->member);;
+        return !(auth()->user()->is_admin) && isset(auth()->user()->member);
     }
 
     protected static ?int $sort = 5;

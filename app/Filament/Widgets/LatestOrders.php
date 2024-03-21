@@ -3,13 +3,10 @@
 namespace App\Filament\Widgets;
 
 use App\Models\Bill;
-use Closure;
-use Filament\Tables;
 use Filament\Tables\Actions\Action;
 use Filament\Tables\Columns\TextColumn;
 use Filament\Widgets\TableWidget as BaseWidget;
 use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\Model;
 use Illuminate\Support\Facades\DB;
 
 class LatestOrders extends BaseWidget
@@ -17,7 +14,7 @@ class LatestOrders extends BaseWidget
 
     public static function canView(): bool
     {
-        return !(auth()->user()->is_admin) && isset(auth()->user()->member);;
+        return !(auth()->user()->is_admin) && isset(auth()->user()->member);
     }
 
     protected static ?int $sort = 4;
@@ -39,9 +36,7 @@ class LatestOrders extends BaseWidget
             TextColumn::make('amount')->label('Bill Amount'),
             TextColumn::make('Paid Amount')
                 ->getStateUsing(function($record) {
-                    $amt = DB::Table('payments')->where('bill_id','=',$record->id)->sum('amount');
-
-                    return $amt;
+                    return DB::Table('payments')->where('bill_id','=',$record->id)->sum('amount');
                 }),
             TextColumn::make('status')->label('Status')->getStateUsing(function ($record) {
                 $stats = ['Un-Paid','Partial Paid','Paid'];

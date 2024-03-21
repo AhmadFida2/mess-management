@@ -3,15 +3,12 @@
 namespace App\Filament\Resources;
 
 use App\Filament\Resources\BreakfastItemsResource\Pages;
-use App\Filament\Resources\BreakfastItemsResource\RelationManagers;
 use App\Models\BreakfastItems;
 use Filament\Forms;
 use Filament\Forms\Form;
 use Filament\Resources\Resource;
 use Filament\Tables\Table;
 use Filament\Tables;
-use Illuminate\Database\Eloquent\Builder;
-use Illuminate\Database\Eloquent\SoftDeletingScope;
 
 class BreakfastItemsResource extends Resource
 {

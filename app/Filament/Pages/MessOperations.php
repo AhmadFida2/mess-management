@@ -2,20 +2,17 @@
 
 namespace App\Filament\Pages;
 
-use App\Filament\Widgets\LatestAttendances;
 use App\Filament\Widgets\MarkAttendance;
 use App\Models\Attendance;
-use App\Models\Bill;
 use App\Models\BreakfastItems;
 use App\Models\Member;
-use Faker\Provider\Text;
 use Filament\Forms\Components\Hidden;
 use Filament\Forms\Components\Repeater;
 use Filament\Forms\Components\Select;
 use Filament\Forms\Components\TextInput;
 use Filament\Notifications\Notification;
+use Filament\Actions\Action;
 use Filament\Pages\Page;
-use Filament\Tables\Actions\Action;
 
 class MessOperations extends Page
 {
@@ -24,7 +21,7 @@ class MessOperations extends Page
 
     protected static string $view = 'filament.pages.mess-operations';
 
-    public function mount()
+    public function mount(): void
     {
         $check = auth()->user()->is_admin || auth()->user()->is_staff;
        abort_unless($check,401);
@@ -47,13 +44,13 @@ class MessOperations extends Page
     protected function getHeaderActions(): array
     {
         return [
-            \Filament\Pages\Actions\Action::make('print')->label('Print Attendance Sheet')
+            Action::make('print')->label('Print Attendance Sheet')
                 ->url(fn (): string => route('attendance-print'))
                 ->openUrlInNewTab()
                 ->color('success')
                 ->icon('heroicon-o-printer')
                 ->tooltip('Print this Bill to A4 Format'),
-            \Filament\Pages\Actions\Action::make('breafast_attendance')->label('Breakfast Attendance')
+            Action::make('breafast_attendance')->label('Breakfast Attendance')
             ->color('primary')
             ->icon('lineawesome-bread-slice-solid')
             ->tooltip('Mark Breakfast Attendance')
@@ -83,8 +80,7 @@ class MessOperations extends Page
                        ->schema([
                            Select::make('name')->label('Item Name')
                            ->options(function() {
-                               $items = BreakfastItems::query()->pluck('name','id');
-                               return $items;
+                               return BreakfastItems::query()->pluck('name','id');
                            })
                                ->reactive()
                            ->afterStateUpdated(function ($state, callable $get,$set)
@@ -98,8 +94,8 @@ class MessOperations extends Page
                            Hidden::make('units')->default(0)
                                ->dehydrateStateUsing(fn($state, callable $get) => $state = $get('quantity')*$state),
                        ])
-                       ->createItemButtonLabel('Add Item')
-                       ->columns(2)
+                       ->addActionLabel('Add Item')
+                       ->columns()
                 ])
         ];
     }
