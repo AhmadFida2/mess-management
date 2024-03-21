@@ -175,6 +175,7 @@
       <path value="$PROJECT_DIR$/vendor/symfony/clock" />
       <path value="$PROJECT_DIR$/vendor/openspout/openspout" />
       <path value="$PROJECT_DIR$/vendor/coolsam/flatpickr" />
+      <path value="$PROJECT_DIR$/vendor/aymanalhattami/filament-slim-scrollbar" />
     </include_path>
   </component>
   <component name="PhpProjectSharedConfiguration" php_language_level="8.2" />
