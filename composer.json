@@ -3,18 +3,11 @@
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
-    "license": "MIT",
-    "repositories": [
-        {
-            "url": "https://github.com/atmonshi/filament-flatpickr.git",
-            "type": "git"
-        }
-    ],
     "require": {
         "php": "^8.2.0",
         "aymanalhattami/filament-slim-scrollbar": "^2.0",
         "codeat3/blade-line-awesome-icons": "^1.2",
-        "coolsam/flatpickr": "dev-laravel-11",
+        "coolsam/flatpickr": "^v3.1.0",
         "filament/filament": "^3.1",
         "flowframe/laravel-trend": "^v0.2.0",
         "guzzlehttp/guzzle": "^7.2",
