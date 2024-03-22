@@ -23,7 +23,8 @@ class MenuResource extends Resource
     {
         return $form
             ->schema([
-                Flatpickr::make('date')->required()->default(now()),
+                Flatpickr::make('date')->required()->default(now())
+                ->dateFormat('Y-m-d'),
                 TextInput::make('breakfast')->label('Breakfast'),
                 TextInput::make('lunch')->label('Lunch'),
                 TextInput::make('dinner')->label('Dinner')->required(),

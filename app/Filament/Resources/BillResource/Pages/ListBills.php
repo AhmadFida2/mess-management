@@ -10,15 +10,11 @@ use App\Models\Bill;
 use App\Models\Member;
 use App\Models\UnitCost;
 use Carbon\Carbon;
-use Filament\Forms\Components\DatePicker;
 use Filament\Forms\Components\MultiSelect;
 use Filament\Notifications\Actions\Action;
 use Filament\Notifications\Notification;
 use Filament\Pages\Actions;
 use Filament\Resources\Pages\ListRecords;
-use Filament\Tables\Actions\BulkAction;
-use Illuminate\Database\Eloquent\Collection;
-use Illuminate\Support\Facades\DB;
 use Illuminate\Validation\Rules\Unique;
 use Coolsam\FilamentFlatpickr\Forms\Components\Flatpickr;
 use function App\Filament\Resources\getMonthlyAttendance;
@@ -153,7 +149,9 @@ class ListBills extends ListRecords
                         ->send();
                 }
             }) ->form([
-                    Flatpickr::make('month')->required()->monthSelect()->default(now()),
+                    Flatpickr::make('month')->required()->monthSelect()->default(now())
+                        ->altFormat('F Y')
+                        ->altInput(),
                 ])->color('danger')->requiresConfirmation()
 
         ];

@@ -26,7 +26,9 @@ class UnitCostResource extends Resource
             ->schema([
                 Flatpickr::make('month')->label('Month')->monthSelect()
                     ->unique()
-                    ->default(now()),
+                    ->altFormat('F Y')
+                    ->altInput()
+                    ->default(today()),
                 TextInput::make('cost')->label('Unit Cost')->numeric()
                    ->default(0.00)
             ]);
