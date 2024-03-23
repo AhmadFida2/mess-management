@@ -59,12 +59,13 @@ class BillResource extends Resource
         return $form
             ->schema([
              Flatpickr::make('month')->required()->monthSelect()->unique(modifyRuleUsing:   function(Unique $rule,callable $get) {
-                 return $rule->Where('member_id',$get('member_id'));})->default(now()->startOfMonth()->format('Y-m-d'))
+                 return $rule->Where('member_id',$get('member_id'));})->default(today()->startOfMonth())
                  ->altFormat('F Y')
                  ->altInput()
                  ->dateFormat('Y-m-d')
                  ->reactive()
                 ->afterStateUpdated(function ($state,callable $get,$set) {
+                    dd($state);
                     $date = Carbon::parse($state)->format('Y-m-d');
                     $cost = UnitCost::where('month', $date)->first()->cost ?? 0;
                     $set('unit_cost',$cost);
