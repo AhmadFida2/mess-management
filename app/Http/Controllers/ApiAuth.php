@@ -49,7 +49,7 @@ class ApiAuth extends Controller
         $id = auth('sanctum')->user()->member->id ?? null;
         $attendances = Attendance::where('member_id',$id)
             ->whereBetween('date',[now()->startOfMonth()->format('Y-m-d'),now()->endOfMonth()->format('Y-m-d')])
-            ->latest()->get();
+            ->orderBy('date','desc')->get();
         return response()->json(['attendances' => $attendances]);
 
     }
