@@ -26,7 +26,6 @@ class ApiAuth extends Controller
 
         return ['token' => $token->plainTextToken,
                 'name' => auth('sanctum')->user()->name,
-
         ];
     }
 
