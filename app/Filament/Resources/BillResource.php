@@ -62,6 +62,7 @@ class BillResource extends Resource
                  return $rule->Where('member_id',$get('member_id'));})->default(now()->startOfMonth()->format('Y-m-d'))
                  ->altFormat('F Y')
                  ->altInput()
+                 ->dateFormat('Y-m-d')
                  ->reactive()
                 ->afterStateUpdated(function ($state,callable $get,$set) {
                     $date = Carbon::parse($state)->format('Y-m-d');
