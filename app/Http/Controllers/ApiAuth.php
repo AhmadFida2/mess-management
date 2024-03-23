@@ -25,7 +25,7 @@ class ApiAuth extends Controller
         $token = $request->user()->createToken('apiLoginToken');
 
         return ['token' => $token->plainTextToken,
-                'name' => auth('sanctum')->user()->member->name,
+                'name' => auth('sanctum')->user()->name,
 
         ];
     }
