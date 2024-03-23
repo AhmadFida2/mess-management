@@ -19,7 +19,7 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        for($i=0;$i<150;$i++)
+        for($i=0;$i<3;$i++)
             {
                 Member::create([
                     'name' => fake()->name(),
@@ -30,7 +30,7 @@ class DatabaseSeeder extends Seeder
                     'security' => 5000,
                 ]);
 
-                for($j=0;$j<150;$j++)
+                for($j=0;$j<20;$j++)
                 {
                     Attendance::create([
                         'date' => fake()->dateTimeBetween('-1 month','now')->format('Y-m-d'),
