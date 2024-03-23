@@ -3,6 +3,12 @@
     "type": "project",
     "description": "The Laravel Framework.",
     "keywords": ["framework", "laravel"],
+    "repositories": [
+        {
+            "type": "git",
+            "url": "https://github.com/AhmadFida2/filament-flatpickr.git"
+        }
+    ],
     "require": {
         "php": "^8.2.0",
         "aymanalhattami/filament-slim-scrollbar": "^2.0",
