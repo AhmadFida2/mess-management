@@ -93,13 +93,13 @@ class BillResource extends Resource
                     }
                 }),
                 TextInput::make('units')->label('Units Consumed')->numeric()
-                ->disabled(),
+                ->disabled()->dehydrated(),
                 TextInput::make('unit_cost')->label('Unit Cost')->numeric()
                     ->disabled()->dehydrated(false)->default(function ($get){
                         $date = Carbon::parse($get('month'))->startOfMonth();
                         return UnitCost::where('month','=',$date)->first()->cost??"0";
                     }),
-                TextInput::make('amount')->label('Bill Amount')->numeric()->disabled(),
+                TextInput::make('amount')->label('Bill Amount')->numeric()->disabled()->dehydrated(),
                 Select::make('status')
                     ->options([
                         0 => 'Unpaid',
