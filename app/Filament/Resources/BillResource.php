@@ -58,7 +58,7 @@ class BillResource extends Resource
     {
         return $form
             ->schema([
-             Flatpickr::make('month')->required()->monthSelect()->unique(function(Unique $rule,callable $get) {
+             Flatpickr::make('month')->required()->monthSelect()->unique(modifyRuleUsing:   function(Unique $rule,callable $get) {
                  return $rule->Where('member_id',$get('member_id'));})->default(now()->startOfMonth()->format('Y-m-d'))
                  ->altFormat('F Y')
                  ->altInput()
